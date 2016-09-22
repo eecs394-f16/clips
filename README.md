@@ -1,1 +1,1 @@
-"#Clips hi" 
+"#Clips hi App for coupons" 
