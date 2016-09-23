@@ -1,0 +1,38 @@
+<div ng-controller="ShowController">
+  <super-navbar>
+    <super-navbar-title>
+      Show
+    </super-navbar-title>
+  </super-navbar>
+
+  <div class="padding">
+    <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
+    <div ng-hide="showSpinner">
+      <h2 ng-bind="business['ID']"></h2>
+      
+      
+      
+       <p>photo_link: <span ng-bind="business['photo_link']"></span></p> 
+      
+       <p>address: <span ng-bind="business['address']"></span></p> 
+      
+       <p>phone_number: <span ng-bind="business['phone_number']"></span></p> 
+      
+       <p>hours: <span ng-bind="business['hours']"></span></p> 
+      
+       <p>website: <span ng-bind="business['website']"></span></p> 
+      
+
+
+      <super-modal-show location="business#edit?id={{ business.id }}">
+        <button class="button button-block button-positive">
+          Edit
+        </button>
+      </super-modal-show>
+
+      <button ng-click="remove(business.id)" class="button button-block button-negative">
+        Remove
+      </button>
+    </div>
+  </div>
+</div>

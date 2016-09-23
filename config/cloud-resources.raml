@@ -1,0 +1,125 @@
+#%RAML 0.8
+title: Steroids Data
+mediaType: application/json
+baseUri: https://rest-api.appgyver.com/v1
+
+traits:
+    - securedBySteroidsApiKey:
+        headers:
+          steroidsApiKey:
+            type: string
+            example: exampleapikey
+            default: c360742aa710719e6fc847bbcc5520c1dca9a44a6f7c063293da03421a300926
+          steroidsAppId:
+            type: integer
+            example: 1234
+            default: 145873
+  
+schemas:
+  - Business_collection: '{"$schema":"http://json-schema.org/schema","title":"Business collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Business representation","properties":{"ID":{"type":"integer"},"photo_link":{"type":"string"},"address":{"type":"string"},"phone_number":{"type":"string"},"hours":{"type":"string"},"website":{"type":"string"}},"required":[]}}}}'
+  - Business_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Business representation","properties":{"object":{"type":"object","properties":{"ID":{"type":"integer"},"photo_link":{"type":"string"},"address":{"type":"string"},"phone_number":{"type":"string"},"hours":{"type":"string"},"website":{"type":"string"}},"required":[]}}}'
+  - copuons_collection: '{"$schema":"http://json-schema.org/schema","title":"copuons collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical copuons representation","properties":{"coupon_id":{"type":"integer"},"photo_link":{"type":"string"},"deal_text":{"type":"string"},"business_id":{"type":"integer"},"qr_link":{"type":"string"},"start_of_deal":{"type":"string"},"end_of_deal":{"type":"string"}},"required":[]}}}}'
+  - copuons_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical copuons representation","properties":{"object":{"type":"object","properties":{"coupon_id":{"type":"integer"},"photo_link":{"type":"string"},"deal_text":{"type":"string"},"business_id":{"type":"integer"},"qr_link":{"type":"string"},"start_of_deal":{"type":"string"},"end_of_deal":{"type":"string"}},"required":[]}}}'
+
+resourceTypes:
+  - dolan_db_collection:
+      usage: This resourceType should be used for any collection of items
+      is: [ securedBySteroidsApiKey ]
+      get:
+        description: |
+          {
+            "action": "collection"
+          }
+        responses:
+          200:
+            description: |
+              {
+                "rootKey": "objects"
+              }
+            body:
+              application/json:
+                schema: <<resourcePathName>>_collection # e.g cars
+      post:
+        description: |
+          {
+            "action": "create",
+            "rootKey": "object"
+          }
+        body:
+          application/json:
+            schema: <<resourcePathName>>_member
+        responses:
+          200:
+            description: |
+              {
+                "rootKey": "object"
+              }
+            body:
+              application/json:
+                schema: <<resourcePathName>>_member # e.g. car
+
+  - dolan_db_member:
+      usage: This resourceType should be used for any built.io item
+      is: [ securedBySteroidsApiKey ]
+      get:
+        description: |
+          {
+            "action": "find"
+          }
+        responses:
+          200:
+            description: |
+              {
+                "rootKey": "object"
+              }
+            body:
+              application/json:
+                schema: <<resourcePathName>>_member # e.g. car
+      put:
+        description: |
+          {
+            "action": "update",
+            "rootKey": "object"
+          }
+        body:
+          application/json:
+            schema: <<resourcePathName>>_member
+        responses:
+          200:
+            description: |
+              {
+                "rootKey": "object"
+              }
+            body:
+              application/json:
+                schema: <<resourcePathName>>_member
+      delete:
+        description: |
+          {
+            "action": "destroy"
+          }
+        responses:
+          200:
+
+
+/Business:
+  description: |
+    {
+      "resourceName": "Business",
+      "identifierKey": "id"
+    }
+  type: dolan_db_collection
+  /{id}:
+    type: dolan_db_member
+
+/copuons:
+  description: |
+    {
+      "resourceName": "copuons",
+      "identifierKey": "id"
+    }
+  type: dolan_db_collection
+  /{id}:
+    type: dolan_db_member
+
+
