@@ -9,19 +9,20 @@
     <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
     <div ng-hide="showSpinner">
       <h2 ng-bind="business['ID']"></h2>
-      
-      
-      
-       <p>photo_link: <span ng-bind="business['photo_link']"></span></p> 
-      
-       <p>address: <span ng-bind="business['address']"></span></p> 
-      
-       <p>phone_number: <span ng-bind="business['phone_number']"></span></p> 
-      
-       <p>hours: <span ng-bind="business['hours']"></span></p> 
-      
-       <p>website: <span ng-bind="business['website']"></span></p> 
-      
+
+
+
+       <p>photo_link: <span ng-bind="business['photo_link']"></span></p>
+       <span ><img ng-src="{{business['photo_link']}}"></span>
+
+       <p>address: <span ng-bind="business['address']"></span></p>
+
+       <p>phone_number: <span ng-bind="business['phone_number']"></span></p>
+
+       <p>hours: <span ng-bind="business['hours']"></span></p>
+
+       <p>website: <span ng-bind="business['website']"></span></p>
+
 
 
       <super-modal-show location="business#edit?id={{ business.id }}">
