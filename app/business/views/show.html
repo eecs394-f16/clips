@@ -8,13 +8,14 @@
   <div class="padding">
     <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
     <div ng-hide="showSpinner">
-      <h2 ng-bind="business['ID']"></h2>
 
 
+       <div class="business-image-header">
+         <img ng-src="{{business['photo_link']}}">
+       </div>
 
-       <p>photo_link: <span ng-bind="business['photo_link']"></span></p>
-       <span ><img ng-src="{{business['photo_link']}}"></span>
 
+       <h1><span ng-bind="business['name']"></span></h1>
        <p>address: <span ng-bind="business['address']"></span></p>
 
        <p>phone_number: <span ng-bind="business['phone_number']"></span></p>
