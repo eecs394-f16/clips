@@ -5,27 +5,30 @@
     </super-navbar-title>
   </super-navbar>
 
-  <div class="padding">
+  <div>
     <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
     <div ng-hide="showSpinner">
-      <h2 ng-bind="coupons['coupon_id']"></h2>
+
+      <div class="coupons-image-header">
+        <img ng-src="{{coupons['photo_link']}}">
+      </div>
+
+      <div class="padding">
+
+       <h1><span ng-bind="coupons['deal_text']"></span></h1>
+
+<!--        <p>photo_link: <span ng-bind="coupons['photo_link']"></span></p>
+ -->      
+       <p><span ng-bind="coupons['deal_text']"></span></p> 
+            
       
+       <p>Start Date: <span ng-bind="coupons['start_of_deal']"></span></p> 
       
-      
-       <p>photo_link: <span ng-bind="coupons['photo_link']"></span></p> 
-      
-       <p>deal_text: <span ng-bind="coupons['deal_text']"></span></p> 
-      
-       <p>deal_text: <span ng-bind="coupons['deal_text']"></span></p> 
-      
-       <p>business_id: <span ng-bind="coupons['business_id']"></span></p> 
-      
-       <p>qr_link: <span ng-bind="coupons['qr_link']"></span></p> 
-      
-       <p>start_of_deal: <span ng-bind="coupons['start_of_deal']"></span></p> 
-      
-       <p>end_of_deal: <span ng-bind="coupons['end_of_deal']"></span></p> 
-      
+       <p>End Date: <span ng-bind="coupons['end_of_deal']"></span></p> 
+
+       <p>QR Code: <span ng-bind="coupons['qr_link']"></span></p> 
+
+     </div>
 
 
       <super-modal-show location="coupons#edit?id={{ coupons.id }}">
