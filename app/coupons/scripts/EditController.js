@@ -1,20 +1,20 @@
 angular
-  .module('copuons')
-  .controller("EditController", function ($scope, Copuons, supersonic) {
-    $scope.copuons = null;
+  .module('coupons')
+  .controller("EditController", function ($scope, Coupons, supersonic) {
+    $scope.coupons = null;
     $scope.showSpinner = true;
 
     // Fetch an object based on id from the database
-    Copuons.find(steroids.view.params.id).then( function (copuons) {
+    Coupons.find(steroids.view.params.id).then( function (coupons) {
       $scope.$apply(function() {
-        $scope.copuons = copuons;
+        $scope.coupons = coupons;
         $scope.showSpinner = false;
       });
     });
 
     $scope.submitForm = function() {
       $scope.showSpinner = true;
-      $scope.copuons.save().then( function () {
+      $scope.coupons.save().then( function () {
         supersonic.ui.modal.hide();
       });
     }

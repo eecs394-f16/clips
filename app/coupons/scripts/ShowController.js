@@ -1,14 +1,14 @@
 angular
-  .module('copuons')
-  .controller("ShowController", function ($scope, Copuons, supersonic) {
-    $scope.copuons = null;
+  .module('coupons')
+  .controller("ShowController", function ($scope, Coupons, supersonic) {
+    $scope.coupons = null;
     $scope.showSpinner = true;
     $scope.dataId = undefined;
 
     var _refreshViewData = function () {
-      Copuons.find($scope.dataId).then( function (copuons) {
+      Coupons.find($scope.dataId).then( function (coupons) {
         $scope.$apply( function () {
-          $scope.copuons = copuons;
+          $scope.coupons = coupons;
           $scope.showSpinner = false;
         });
       });
@@ -27,7 +27,7 @@ angular
 
     $scope.remove = function (id) {
       $scope.showSpinner = true;
-      $scope.copuons.delete().then( function () {
+      $scope.coupons.delete().then( function () {
         supersonic.ui.layers.pop();
       });
     }

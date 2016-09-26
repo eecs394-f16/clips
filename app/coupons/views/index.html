@@ -1,30 +1,30 @@
 <div ng-controller="IndexController">
   <super-navbar>
     <super-navbar-title>
-      Copuons Index
+      Coupons Index
     </super-navbar-title>
   </super-navbar>
 
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
   <div ng-hide="showSpinner">
-    <ul class="list" ng-hide="copuonss.length == 0">
+    <ul class="list" ng-hide="couponss.length == 0">
 
-      <super-navigate location="copuons#show" data-params-id="{{ copuons.id }}" ng-repeat="copuons in copuonss">
+      <super-navigate location="coupons#show" data-params-id="{{ coupons.id }}" ng-repeat="coupons in couponss">
         <li class="item item-icon-right">
-          <span ng-bind="copuons['coupon_id']"></span>
+          <span ng-bind="coupons['coupon_id']"></span>
           <i class="icon super-ios-arrow-right"></i>
         </li>
       </super-navigate>
 
     </ul>
 
-    <h4 ng-show="copuonss.length == 0" class="assertive padding">
-      No copuonss found. Create one?
+    <h4 ng-show="couponss.length == 0" class="assertive padding">
+      No couponss found. Create one?
     </h4>
 
-    <super-modal-show location="copuons#new">
+    <super-modal-show location="coupons#new">
       <button class="button button-full button-positive">
-        Create a new copuons
+        Create a new coupons
       </button>
     </super-modal-show>
   </div>

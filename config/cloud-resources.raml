@@ -18,8 +18,8 @@ traits:
 schemas:
   - Business_collection: '{"$schema":"http://json-schema.org/schema","title":"Business collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Business representation","properties":{"ID":{"type":"integer"},"photo_link":{"type":"string"},"address":{"type":"string"},"phone_number":{"type":"string"},"hours":{"type":"string"},"website":{"type":"string"},"name":{"type":"string"}},"required":[]}}}}'
   - Business_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Business representation","properties":{"object":{"type":"object","properties":{"ID":{"type":"integer"},"photo_link":{"type":"string"},"address":{"type":"string"},"phone_number":{"type":"string"},"hours":{"type":"string"},"website":{"type":"string"},"name":{"type":"string"}},"required":[]}}}'
-  - copuons_collection: '{"$schema":"http://json-schema.org/schema","title":"copuons collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical copuons representation","properties":{"coupon_id":{"type":"integer"},"photo_link":{"type":"string"},"deal_text":{"type":"string"},"business_id":{"type":"integer"},"qr_link":{"type":"string"},"start_of_deal":{"type":"string"},"end_of_deal":{"type":"string"}},"required":[]}}}}'
-  - copuons_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical copuons representation","properties":{"object":{"type":"object","properties":{"coupon_id":{"type":"integer"},"photo_link":{"type":"string"},"deal_text":{"type":"string"},"business_id":{"type":"integer"},"qr_link":{"type":"string"},"start_of_deal":{"type":"string"},"end_of_deal":{"type":"string"}},"required":[]}}}'
+  - coupons_collection: '{"$schema":"http://json-schema.org/schema","title":"coupons collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical coupons representation","properties":{"coupon_id":{"type":"integer"},"photo_link":{"type":"string"},"deal_text":{"type":"string"},"business_id":{"type":"integer"},"qr_link":{"type":"string"},"start_of_deal":{"type":"string"},"end_of_deal":{"type":"string"}},"required":[]}}}}'
+  - coupons_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical coupons representation","properties":{"object":{"type":"object","properties":{"coupon_id":{"type":"integer"},"photo_link":{"type":"string"},"deal_text":{"type":"string"},"business_id":{"type":"integer"},"qr_link":{"type":"string"},"start_of_deal":{"type":"string"},"end_of_deal":{"type":"string"}},"required":[]}}}'
 
 resourceTypes:
   - dolan_db_collection:
@@ -112,10 +112,10 @@ resourceTypes:
   /{id}:
     type: dolan_db_member
 
-/copuons:
+/coupons:
   description: |
     {
-      "resourceName": "copuons",
+      "resourceName": "coupons",
       "identifierKey": "id"
     }
   type: dolan_db_collection

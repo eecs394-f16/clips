@@ -1,0 +1,42 @@
+<div ng-controller="ShowController">
+  <super-navbar>
+    <super-navbar-title>
+      Show
+    </super-navbar-title>
+  </super-navbar>
+
+  <div class="padding">
+    <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
+    <div ng-hide="showSpinner">
+      <h2 ng-bind="coupons['coupon_id']"></h2>
+      
+      
+      
+       <p>photo_link: <span ng-bind="coupons['photo_link']"></span></p> 
+      
+       <p>deal_text: <span ng-bind="coupons['deal_text']"></span></p> 
+      
+       <p>deal_text: <span ng-bind="coupons['deal_text']"></span></p> 
+      
+       <p>business_id: <span ng-bind="coupons['business_id']"></span></p> 
+      
+       <p>qr_link: <span ng-bind="coupons['qr_link']"></span></p> 
+      
+       <p>start_of_deal: <span ng-bind="coupons['start_of_deal']"></span></p> 
+      
+       <p>end_of_deal: <span ng-bind="coupons['end_of_deal']"></span></p> 
+      
+
+
+      <super-modal-show location="coupons#edit?id={{ coupons.id }}">
+        <button class="button button-block button-positive">
+          Edit
+        </button>
+      </super-modal-show>
+
+      <button ng-click="remove(coupons.id)" class="button button-block button-negative">
+        Remove
+      </button>
+    </div>
+  </div>
+</div>
