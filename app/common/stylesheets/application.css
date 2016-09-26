@@ -12,6 +12,15 @@
   width: 100%
 }
 
+.coupons-list-box {
+    background-color: blue;
+    color: #FFF;
+}
+
+.coupons-list-image {
+    width: 40px;
+}
+
 .coupons-image-header{
   width: 100%
 }

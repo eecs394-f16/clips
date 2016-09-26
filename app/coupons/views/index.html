@@ -6,13 +6,13 @@
   </super-navbar>
 
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
-  <div ng-hide="showSpinner">
+  <div  ng-hide="showSpinner">
     <ul class="list" ng-hide="couponss.length == 0">
 
       <super-navigate location="coupons#show" data-params-id="{{ coupons.id }}" ng-repeat="coupons in couponss">
-        <li class="item item-icon-right">
+        <li class="item item-icon-right coupons-list-box">
 	  <p>
-	    <div>
+	    <div class="coupon-list-image>
               <img ng-src="{{coupons['photo_link']}}">
 	    </div>
 	    {{coupons['deal_text']}}
