@@ -11,7 +11,14 @@
 
       <super-navigate location="coupons#show" data-params-id="{{ coupons.id }}" ng-repeat="coupons in couponss">
         <li class="item item-icon-right">
-          <span ng-bind="coupons['coupon_id']"></span>
+	  <p>
+	    <div>
+              <img ng-src="{{coupons['photo_link']}}">
+	    </div>
+	    {{coupons['deal_text']}}
+	    {{coupons['start_of_deal']}}
+	   
+	  </p>
           <i class="icon super-ios-arrow-right"></i>
         </li>
       </super-navigate>
