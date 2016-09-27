@@ -12,6 +12,27 @@
   width: 100%
 }
 
+.coupons-list-box {
+    background-color: #0052cc;
+    color: #FFF;
+    height: 120px;
+    line-height: 80px;
+    font-size: 20px;
+    //vertical-align: middle;
+}
+
+.coupons-list-image {
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+}
+
+.coupons-list-image img {
+    width: 100%;
+    height: 100%;
+}
+
 .coupons-image-header{
   width: 100%
 }
