@@ -12,11 +12,19 @@
   width: 100%
 }
 
+.coupons-list-box h2{
+  margin: 0;
+}
+
+.coupons-list-box p{
+  margin: 0;
+}
+
 .coupons-list-box {
-    background-color: #0052cc;
-    color: #FFF;
-    height: 120px;
-    line-height: 80px;
+    background-color: #f0f0f0;
+    color: #000;
+    /*height: 120px;*/
+    /*line-height: 80px;*/
     font-size: 20px;
     //vertical-align: middle;
 }
@@ -40,4 +48,3 @@
 .coupons-image-header img{
   width: 100%
 }
-

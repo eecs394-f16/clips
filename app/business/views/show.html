@@ -16,13 +16,18 @@
        <div class="padding">
          <h1><span ng-bind="business['name']"></span></h1>
 
-         <p>Address: <span ng-bind="business['address']"></span></p>
+         <p>
+           ID: {{business.id}}
+         </p>
 
-         <p>Phone Number: <span ng-bind="business['phone_number']"></span></p>
 
-         <p>Hours: <span ng-bind="business['hours']"></span></p>
+         <p><span ng-bind="business['address']"></span></p>
 
-         <p>Website: <span ng-bind="business['website']"></span></p>
+         <p><span ng-bind="business['phone_number']"></span></p>
+
+         <p><span ng-bind="business['hours']"></span></p>
+
+         <p><span ng-bind="business['website']"></span></p>
        </div>
 
        <div>
@@ -33,15 +38,7 @@
 
 
 
-      <super-modal-show location="business#edit?id={{ business.id }}">
-        <button class="button button-block button-positive">
-          Edit
-        </button>
-      </super-modal-show>
 
-      <button ng-click="remove(business.id)" class="button button-block button-negative">
-        Remove
-      </button>
     </div>
   </div>
 </div>

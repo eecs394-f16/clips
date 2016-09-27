@@ -1,6 +1,6 @@
 angular
   .module('coupons')
-  .controller("ShowController", function ($scope, Coupons, supersonic) {
+  .controller("ShowController", function ($scope, Coupons, supersonic, Business, $rootScope) {
     $scope.coupons = null;
     $scope.showSpinner = true;
     $scope.dataId = undefined;
@@ -31,4 +31,7 @@ angular
         supersonic.ui.layers.pop();
       });
     }
+
+
+
   });

@@ -7,18 +7,27 @@
 
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
   <div  ng-hide="showSpinner">
+    <!-- 
+    <p>
+      {{debugText}}
+    </p> -->
     <ul class="list" ng-hide="couponss.length == 0">
-
       <super-navigate location="coupons#show" data-params-id="{{ coupons.id }}" ng-repeat="coupons in couponss">
         <li class="item item-icon-right coupons-list-box">
-	  <p>
+
 	    <div class="coupons-list-image">
               <img ng-src="{{coupons['photo_link']}}">
 	    </div>
-	    {{coupons['deal_text']}}
-	    {{coupons['start_of_deal']}}
-	   
-	  </p>
+      <h2>
+        {{coupons['business_name']}}
+      </h2>
+      <p>
+        {{coupons['deal_text']}}
+      </p>
+      <p>
+        {{coupons['start_of_deal']}} - {{coupons['end_of_deal']}}
+      </p>
+
           <i class="icon super-ios-arrow-right"></i>
         </li>
       </super-navigate>
@@ -29,10 +38,10 @@
       No couponss found. Create one?
     </h4>
 
-    <super-modal-show location="coupons#new">
+    <!-- <super-modal-show location="coupons#new">
       <button class="button button-full button-positive">
         Create a new coupons
       </button>
-    </super-modal-show>
+    </super-modal-show> -->
   </div>
 </div>

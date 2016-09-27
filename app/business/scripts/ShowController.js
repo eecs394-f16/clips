@@ -31,4 +31,5 @@ angular
         supersonic.ui.layers.pop();
       });
     }
+
   });
