@@ -2,7 +2,7 @@
 var AppController = function($scope, $location, NavBarService){
 
     $scope.test = 'test text';
-    $scope.activeTabIndex = 0;
+    $scope.activeTabIndex = 1;
     $scope.activeTabName = "coupons";
 
     $scope.back = {
@@ -12,12 +12,20 @@ var AppController = function($scope, $location, NavBarService){
 
     $scope.tabs = [
         {
+            text: 'Account',
+            link: '#account',
+            default_link: "#account",
+            class: 'passive',
+            glyph: "glyphicon glyphicon-user",
+            index: 0
+        },
+        {
             text: 'Coupons',
             link: '#coupons',
             default_link: "#coupons",
             class: 'passive',
             glyph: "glyphicon glyphicon-piggy-bank",
-            index: 0
+            index: 1
         },
         {
             text: 'Businesses',
@@ -25,7 +33,7 @@ var AppController = function($scope, $location, NavBarService){
             default_link: "#businesses",
             class: 'passive',
             glyph: "glyphicon glyphicon-shopping-cart",
-            index: 1
+            index: 2
         }
     ];
 

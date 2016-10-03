@@ -3,6 +3,9 @@
     angular.module("clips")
         .config(['$routeProvider', function($routeProvider) {
             $routeProvider.
+                when('/account', {
+                    templateUrl: 'app/account/main.html',
+                    controller: 'AccountController'}).
                 when('/coupons', {
                     templateUrl: 'app/coupons/main.html',
                     controller: 'CouponsController'}).
