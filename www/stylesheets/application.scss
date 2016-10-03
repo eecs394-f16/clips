@@ -1,0 +1,126 @@
+$grey-background: #f1f1f1;
+
+
+.view-frame{
+    height: 100%;
+    background-color: $grey-background;
+    margin-top: 53px
+}
+
+.spin{
+     -webkit-transform-origin: 50% 58%;
+     transform-origin:50% 58%;
+     -ms-transform-origin:50% 58%; /* IE 9 */
+     -webkit-animation: spin .2s infinite linear;
+     -moz-animation: spin .2s infinite linear;
+     animation: spin .2s infinite linear;
+}
+
+#top-navbar{
+    text-align: center;
+    height: 53px;
+    position: fixed;
+    display: block;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    background-color: white;
+}
+
+
+
+
+.clips-navbar {
+    // background-color: $grey-background;
+    background-color: white;
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .glyphicon{
+        padding-top: 8px;
+        display: block;
+        text-align: center;
+    }
+
+    li {
+        float: left;
+        width: 50%;
+        a{
+            display: block;
+            text-align: center;
+            padding: 16px;
+            text-decoration: none;
+            color: grey;
+            padding-top: 3px;
+            padding-bottom: 8px;
+        }
+
+        a.active{
+            color: #6cb5ff;
+        }
+
+    }
+}
+
+.coupon-card{
+    margin: 10px 10px;
+    background-color: #fff;
+    img {
+        width: 80px;
+        height: 80px;
+        border-radius: 52px;
+        overflow: hidden;
+        margin-top: 7px;
+    }
+}
+
+.business-card{
+    margin: 10px 10px;
+    background-color: #fff;
+    img {
+        width: 80px;
+        height: 80px;
+        border-radius: 52px;
+        overflow: hidden;
+        margin-top: 7px;
+    }
+}
+
+// deal with supersonic styling
+.row{
+    margin: 0
+}
+.coupon-scroll-area{
+    background-color: $grey-background;
+    padding-top: 1px;
+    padding-bottom: 50px;
+    height: 100%
+}
+
+
+.detail-page{
+
+
+    .content{
+        padding-top: 10px;
+    }
+
+    #header-image{
+        width: 100%;
+    }
+
+    .button-row{
+        .btn{
+            width: 100%
+        }
+    }
+
+    .row{
+        margin-left: 2px
+    }
+}

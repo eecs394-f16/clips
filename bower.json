@@ -1,9 +1,11 @@
 {
-  "name": "clips",
+  "name": "clips2",
   "version": "0.0.0",
   "private": true,
   "dependencies": {
     "angular": "1.3.x",
-    "supersonic": "1.x"
+    "supersonic": "1.x",
+    "angular-route": "^1.5.8",
+    "bootstrap": "^3.3.7"
   }
 }

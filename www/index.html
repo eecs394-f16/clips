@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  <title>Clips</title></title>
+
+  <link rel="stylesheet" href="/components/supersonic/css/supersonic.css">
+  <link rel="stylesheet" href="/stylesheets/application.css">
+  <link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.css">
+
+  <link rel="import" href="/components/supersonic/components/import.html">
+
+  <!--Third party dependenceis-->
+  <script src="http://localhost/cordova.js"></script>
+  <script src="/components/steroids-js/steroids.js"></script>
+  <script src="/components/jquery/dist/jquery.js"></script>
+  <script src="/components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="/components/angular/angular.js"></script>
+  <script src="/components/supersonic/supersonic.js"></script>
+  <script src="/components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="/components/angular-route/angular-route.js"></script>
+
+
+  <!--our code-->
+  <script src="/app/app.module.js"></script>
+  <script src="/app/app.config.js"></script>
+  <script src="/app/app.controller.js"></script>
+  <script src="/app/app.services.js"></script>
+  <script src="/app/coupons/coupons.controller.js"></script>
+  <script src="/app/coupons/couponsDetail.controller.js"></script>
+  <script src="/app/businesses/businesses.controller.js"></script>
+  <script src="/app/businesses/businessesDetails.controller.js"></script>
+
+</head>
+<body ng-app="clips">
+<div ng-controller="AppController">
+
+  <!-- <super-navbar>
+
+      <super-navbar-button ng-click="buttonTapped()" ng-if="back[tabs[activeTabIndex].text.toLowerCase()]">
+      Tap me
+    </super-navbar-button>
+
+
+    <super-navbar-title ng-bind="tabs[activeTabIndex].text">
+    </super-navbar-title>
+  </super-navbar> -->
+
+<div id="top-navbar">
+  <div ng-if="back[tabs[activeTabIndex].text.toLowerCase()]" class ="row">
+    <button ng-click='goBack()' class='btn btn-link col-xs-3' >
+      Back
+    </button>
+    <h4 ng-bind="tabs[activeTabIndex].text" class="col-xs-6">
+    </h4>
+  </div>
+  <div ng-if="!back[tabs[activeTabIndex].text.toLowerCase()]" class ="row">
+    <h4 ng-bind="tabs[activeTabIndex].text" class="col-xs-6 col-xs-offset-3 ">
+    </h4>
+  </div>
+
+
+
+</div>
+
+
+  <div class="view-container">
+    <div ng-view class="view-frame"></div>
+  </div>
+
+
+  <nav class="navbar-fixed-bottom">
+    <div class="clips-navbar">
+      <ul>
+        <li ng-repeat="tab in tabs">
+          <span class={{tab.glyph}}></span>
+          <a href={{tab.link}} ng-click="changeTabs(tab.index)" class={{tab.class}}>
+            {{tab.text}}
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+</div>
+
+
+</body>
+</html>
