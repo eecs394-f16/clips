@@ -1,9 +1,6 @@
 /* recommended */
 var AccountController = function($scope, $http, NavBarService){
-
-
 };
-
 
 angular
     .module('clips.account')
