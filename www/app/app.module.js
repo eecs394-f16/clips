@@ -6,6 +6,7 @@ angular.module('clips.account', []);
 
 angular.module('clips', ['supersonic',
                           'ngRoute',
+                          "leaflet-directive",
                           'clips.coupons',
                           'clips.businesses',
                           "clips.services",
@@ -13,5 +14,4 @@ angular.module('clips', ['supersonic',
 ])
 .controller('IndexController', function($scope, supersonic) {
 
-  $scope.navbarTitle = "hoopla hello";
 });

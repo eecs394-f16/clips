@@ -21,9 +21,10 @@
   <script src="/components/supersonic/supersonic.js"></script>
   <script src="/components/webcomponentsjs/webcomponents-lite.js"></script>
   <script src="/components/angular-route/angular-route.js"></script>
+  <script src="/components/leaflet/dist/leaflet.js"></script>
+  <script src="/components/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
 
   <!--our code-->
   <script src="/app/app.module.js"></script>
@@ -40,36 +41,15 @@
 <body ng-app="clips">
 <div ng-controller="AppController">
 
-  <!-- <super-navbar>
-
-      <super-navbar-button ng-click="buttonTapped()" ng-if="back[tabs[activeTabIndex].text.toLowerCase()]">
-      Tap me
+  <super-navbar>
+    <super-navbar-button ng-bind='backText' ng-click="goBack()">
     </super-navbar-button>
-
-
     <super-navbar-title ng-bind="tabs[activeTabIndex].text">
     </super-navbar-title>
-  </super-navbar> -->
-
-<div id="top-navbar">
-  <div ng-if="back[tabs[activeTabIndex].text.toLowerCase()]" class ="row">
-    <button ng-click='goBack()' class='btn btn-link col-xs-3' >
-      Back
-    </button>
-    <h4 ng-bind="tabs[activeTabIndex].text" class="col-xs-6">
-    </h4>
-  </div>
-  <div ng-if="!back[tabs[activeTabIndex].text.toLowerCase()]" class ="row">
-    <h4 ng-bind="tabs[activeTabIndex].text" class="col-xs-6 col-xs-offset-3 ">
-    </h4>
-  </div>
+  </super-navbar>
 
 
-
-</div>
-
-
-<div class="view-container">
+  <div class="view-container">
     <div ng-view class="view-frame"></div>
   </div>
 

@@ -15,18 +15,8 @@
             </h5>
         </div>
 
-	<div style="height:300px;width:300px=" id="mapid"></div>
-  <script>
-    var mymap = L.map('mapid').setView([42.0451, -87.6877], 11);
+        <leaflet height="200px" width="200px"></leaflet>
 
-
-
-    var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-	var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
-	var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 12, attribution: osmAttrib});		
-    
-mymap.addLayer(osm);
-  </script>
 
         <div ng-if="!waiting && !error" class="coupon-scroll-area">
             <div class="coupon-card " ng-repeat="coupon in coupons">

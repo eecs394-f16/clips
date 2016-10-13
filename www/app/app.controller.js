@@ -4,11 +4,12 @@ var AppController = function($scope, $location, NavBarService){
     $scope.test = 'test text';
     $scope.activeTabIndex = 1;
     $scope.activeTabName = "coupons";
-
     $scope.back = {
         coupons: false,
         businesses: false
     };
+    $scope.backText = undefined;
+
 
     $scope.tabs = [
         {
@@ -44,9 +45,12 @@ var AppController = function($scope, $location, NavBarService){
         if(value.length == 0){
             $scope.back[$scope.activeTabName] = false;
             $scope.tabs[$scope.activeTabIndex].link = $scope.tabs[$scope.activeTabIndex].default_link;
+            $scope.backText = undefined;
+
         }else{
             $scope.tabs[$scope.activeTabIndex].link = next;
             $scope.back[$scope.activeTabName] = true;
+            $scope.backText = 'back'
         }
     }
 
