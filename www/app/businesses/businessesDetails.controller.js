@@ -5,6 +5,13 @@ var BusinessesDetailsController = function($scope, $http, NavBarService, $routeP
     $scope.business = undefined;
     $scope.error = undefined;
     $scope.waiting = true;
+    $scope.center = {
+	lat: 42.0451,
+	lng: -87.6877,
+	zoom: 2
+    }
+
+    $scope.markers = {}
 
     $http({
         method: "GET",
@@ -12,6 +19,24 @@ var BusinessesDetailsController = function($scope, $http, NavBarService, $routeP
     }).then(
         function successCallback(response){
             $scope.business = response.data[0];
+
+	    $scope.center = {
+		lat: $scope.business.lat,
+		lng: $scope.business.lon,
+		zoom: 20
+	    }
+
+	    var html = $scope.business.name + '<br>' + $scope.business.address;
+	    
+	    $scope.markers = {
+		businessLoc: {
+		    lat: $scope.business.lat,
+		    lng: $scope.business.lon,
+		    focus: true,
+		    message: html
+		}
+	    }
+	    
             $scope.waiting = false;
         }, function errorCallback(error){
             console.log(error);
