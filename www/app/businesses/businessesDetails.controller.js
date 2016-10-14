@@ -5,6 +5,11 @@ var BusinessesDetailsController = function($scope, $http, NavBarService, $routeP
     $scope.business = undefined;
     $scope.error = undefined;
     $scope.waiting = true;
+    $scope.center = {
+	lat: 42.0451,
+	lng: -87.6877,
+	zoom: 11
+    }
 
     $http({
         method: "GET",
