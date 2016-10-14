@@ -9,6 +9,8 @@ var CouponsDetailController = function($scope, $routeParams, $http){
 
     $scope.error = undefined;
     $scope.waiting = true;
+    $scope.showQR = false;
+    $scope.redeemcount = 0;
 
     $http({
         method: "GET",
@@ -23,6 +25,10 @@ var CouponsDetailController = function($scope, $routeParams, $http){
             $scope.waiting = false;
         }
     );
+    $scope.showCode = function() {
+                    $scope.showQR = true;
+                    $scope.redeemcount ++}
+
 };
 
 
