@@ -8,7 +8,7 @@ var BusinessesDetailsController = function($scope, $http, NavBarService, $routeP
     $scope.center = {
 	lat: 42.0451,
 	lng: -87.6877,
-	zoom: 11
+	zoom: 2
     }
 
     $http({
@@ -17,6 +17,13 @@ var BusinessesDetailsController = function($scope, $http, NavBarService, $routeP
     }).then(
         function successCallback(response){
             $scope.business = response.data[0];
+
+	    $scope.center = {
+		lat: $scope.business.lat,
+		lng: $scope.business.lon,
+		zoom: 15
+	    }
+	    
             $scope.waiting = false;
         }, function errorCallback(error){
             console.log(error);
