@@ -11,6 +11,8 @@ var BusinessesDetailsController = function($scope, $http, NavBarService, $routeP
 	zoom: 2
     }
 
+    $scope.markers = {}
+
     $http({
         method: "GET",
         url: " https://eecs394-clips-backend.herokuapp.com/business/" + $scope.businesssId
@@ -21,7 +23,18 @@ var BusinessesDetailsController = function($scope, $http, NavBarService, $routeP
 	    $scope.center = {
 		lat: $scope.business.lat,
 		lng: $scope.business.lon,
-		zoom: 15
+		zoom: 20
+	    }
+
+	    var html = $scope.business.name + '<br>' + $scope.business.address;
+	    
+	    $scope.markers = {
+		businessLoc: {
+		    lat: $scope.business.lat,
+		    lng: $scope.business.lon,
+		    focus: true,
+		    message: html
+		}
 	    }
 	    
             $scope.waiting = false;
