@@ -1,4 +1,13 @@
-var appServices = angular.module('clips.services', []);
+var appServices = angular.module('clips.services', ['$resource']);
+
+appServices.factory('UserCouponService', ['$resource',	function($resource){
+	return $resource('/user/:userid/coupons', { id: '@userid'	},	{
+		get: { method: "GET", isArray: true},
+		save: { method: "POST", url: '/user/:userid/coupons/:couponid', params:{userid: '@userid', couponid: "@couponid"}},
+		remove: { method: "DELETE", url: '/user/:userid/coupons/:couponid', params:{userid: '@userid', couponid: "@couponid"}}
+	});
+}]);
+
 
 appServices.factory('NavBarService', [function(){
  	var pathStack = {
@@ -34,10 +43,6 @@ appServices.factory('NavBarService', [function(){
 	var getNextLocation = function(page){
 		return currentStates[page];
 	}
-
-
-
-
   //register an observer
   var registerObserverCallback = function(callback){
     observerCallbacks.push(callback);
@@ -49,7 +54,6 @@ appServices.factory('NavBarService', [function(){
       callback();
     });
   };
-
 
 	return {
 		pathStackPush: pathStackPush,

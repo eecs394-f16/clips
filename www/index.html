@@ -23,6 +23,7 @@
   <script src="/components/angular-route/angular-route.js"></script>
   <script src="/components/leaflet/dist/leaflet.js"></script>
   <script src="/components/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>
+  <script src="/components/angular-resource/angular-resource.js"></script>
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
 
@@ -30,7 +31,7 @@
   <script src="/app/app.module.js"></script>
   <script src="/app/app.config.js"></script>
   <script src="/app/app.controller.js"></script>
-  <script src="/app/app.services.js"></script>
+  <script src="/app/services/app.services.js"></script>
   <script src="/app/coupons/coupons.controller.js"></script>
   <script src="/app/coupons/couponsDetail.controller.js"></script>
   <script src="/app/businesses/businesses.controller.js"></script>
@@ -57,9 +58,9 @@
   <nav class="navbar-fixed-bottom">
     <div class="clips-navbar">
       <ul>
-        <li ng-repeat="tab in tabs">
+        <li ng-repeat="tab in tabs" class={{tab.class}}>
           <span class={{tab.glyph}}></span>
-          <a href={{tab.link}} ng-click="changeTabs(tab.index)" class={{tab.class}}>
+          <a href={{tab.link}} ng-click="changeTabs(tab.index)" >
             {{tab.text}}
           </a>
         </li>

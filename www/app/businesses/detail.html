@@ -2,7 +2,7 @@
     <div class="content container">
         <div class="billboard">
             <div ng-if="business.photo_link" class="col-sm-2">
-                <img src={{business.photo_link}} id='header-image'>
+                <img ng-src={{business.photo_link}} id='header-image'>
             </div>
         </div>
 
@@ -22,7 +22,7 @@
             <div class="coupon-card " ng-repeat="coupon in coupons">
                 <a class="row" ng-href="/#coupons/{{coupon.id}}" ng-click = "goTo(coupon.id)">
                     <div ng-if="coupon.photo_link" class="col-sm-2">
-                        <img src={{coupon.photo_link}}>
+                        <img ng-src={{coupon.photo_link}}>
                     </div>
                     <div ng-if="!coupon.photo_link" class="col-sm-2">
                         <img src="./assets/money-flat.png">
