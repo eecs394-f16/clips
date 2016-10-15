@@ -18,9 +18,13 @@
         </div>
         <div class="row button-row">
             <div class="col-xs-6">
-                <button class="btn btn-primary" ng-click = "showCode()">
+                <button class="btn btn-primary">
                     Redeem
                 </button>
+                <script>
+                    function myFunction() {
+                    alert("QR Code goes here");}
+                </script>
             </div>
             <div class="col-xs-6">
                 <button ng-if="!saved" class="btn btn-primary" ng-click="saveCoupon()">
@@ -31,10 +35,30 @@
                 </button>
             </div>
         </div>
-                <div ng-if= "showQR">
+          <div ng-if= "showQR">
             <h1>
                 QR Code here
             </h1>
+        </div>
+
+
+        <div class="bs-callout bs-callout-success" ng-if="saved">
+
+          <h4>
+            <span class="glyphicon glyphicon-check"></span>
+            This coupon is saved to your account.
+          </h4>
+        </div>
+
+        <div class="bs-callout bs-callout-danger" ng-if="error">
+
+          <h4>
+            <span class="glyphicon glyphicon-remove-circle"></span>
+            Error
+          </h4>
+          <p>
+            {{error}}
+          </p>
         </div>
     </div>
 </div>
