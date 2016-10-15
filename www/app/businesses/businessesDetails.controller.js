@@ -27,7 +27,7 @@ var BusinessesDetailsController = function($scope, $http, NavBarService, $routeP
 	    }
 
 	    var html = $scope.business.name + '<br>' + $scope.business.address;
-	    
+
 	    $scope.markers = {
 		businessLoc: {
 		    lat: $scope.business.lat,
@@ -36,7 +36,7 @@ var BusinessesDetailsController = function($scope, $http, NavBarService, $routeP
 		    message: html
 		}
 	    }
-	    
+
             $scope.waiting = false;
         }, function errorCallback(error){
             console.log(error);

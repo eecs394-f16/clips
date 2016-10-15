@@ -37,4 +37,3 @@ angular
     .controller("CouponsDetailController", CouponsDetailController);
 
 CouponsDetailController.$inject = ['$scope', "$routeParams", "$http"];
-

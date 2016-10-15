@@ -23,7 +23,7 @@
             <div class="business-card " ng-repeat="business in businesses">
                 <a class="row" ng-href="/#businesses/{{business.id}}" ng-click = "goTo(business.id)">
                     <div ng-if="business.photo_link" class="col-sm-2">
-                        <img src={{business.photo_link}}>
+                        <img ng-src={{business.photo_link}}>
                     </div>
                     <div ng-if="!business.photo_link" class="col-sm-2">
                         <img src="./assets/money-flat.png">
