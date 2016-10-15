@@ -2,10 +2,9 @@
     <div class="content container">
         <div class="billboard">
             <div ng-if="coupon.photo_link" class="col-sm-2">
-                <img src={{coupon.photo_link}}  id='header-image'>
+                <img ng-src="{{coupon.photo_link}}" id="header-image">
             </div>
         </div>
-
         <div class="col-sm-10">
             <h4>
                 {{coupon.deal_text}}
@@ -19,13 +18,20 @@
         </div>
         <div class="row button-row">
             <div class="col-xs-6">
-                <button class="btn btn-primary" ng-click= "showCode()">
+                <button class="btn btn-primary">
                     Redeem
                 </button>
+                <script>
+                    function myFunction() {
+                    alert("QR Code goes here");}
+                </script>
             </div>
             <div class="col-xs-6">
-                <button class="btn btn-primary">
+                <button ng-if="!saved" class="btn btn-primary" ng-click="saveCoupon()">
                     Save for Later
+                </button>
+                <button ng-if="saved" class="btn btn-danger" ng-click="removeCoupon()">
+                    Un-Save
                 </button>
             </div>
         </div>
@@ -36,3 +42,4 @@
         </div>
     </div>
 </div>
+</body>

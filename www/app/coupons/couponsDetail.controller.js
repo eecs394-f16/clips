@@ -11,6 +11,8 @@ var CouponsDetailController = function($scope, $routeParams, $http, UserCouponSe
 
     $scope.error = undefined;
     $scope.waiting = true;
+    $scope.showQR = false;
+    $scope.redeemcount = 0;
 
     $scope.saveCoupon = function(){
       UserCouponService.save({userid: 1, couponid:   $scope.couponId}).$promise.then(
@@ -65,6 +67,10 @@ var CouponsDetailController = function($scope, $routeParams, $http, UserCouponSe
             $scope.waiting = false;
         }
     );
+
+    $scope.showCode = function() {
+                $scope.showQR = true;
+                $scope.redeemcount ++}
 
 
 };
