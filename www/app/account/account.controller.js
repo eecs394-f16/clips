@@ -30,7 +30,10 @@ var AccountController = function($scope, $http, UserCouponService){
       //success
       function( value ){
         $scope.deleted;
-        $scope.savedCoupons.splice(couponIndex, 1)
+        $scope.savedCoupons.splice(couponIndex, 1);
+        for(var i = couponIndex; i < $scope.savedCoupons.length; i++){
+            $scope.savedCoupons.index;
+        }
       },
       //error
       function( error ){
