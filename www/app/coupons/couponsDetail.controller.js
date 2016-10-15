@@ -6,6 +6,7 @@ var CouponsDetailController = function($scope, $routeParams, $http, UserCouponSe
     $scope.couponId = $routeParams.couponId;
     $scope.saving = false;
     $scope.saved = false;
+    $scope.redeemed = false;
 
     $scope.coupon = undefined;
 
@@ -71,7 +72,9 @@ var CouponsDetailController = function($scope, $routeParams, $http, UserCouponSe
     $scope.showCode = function() {
                 $scope.showQR = true;
                 $scope.redeemcount ++}
-
+    $scope.hideCode = function() {
+                $scope.showQR = false;
+                $scope.redeemcount ++}
 
 };
 

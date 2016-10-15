@@ -18,8 +18,11 @@
         </div>
         <div class="row button-row">
             <div class="col-xs-6">
-                <button class="btn btn-primary" ng-click= "showCode()">
+                <button ng-if = "!showQR" class="btn btn-primary" ng-click= "showCode()">
                     Redeem
+                </button>
+                <button ng-if = "showQR" class="btn btn-success" ng-click= "hideCode()">
+                    Done
                 </button>
             </div>
             <div class="col-xs-6">
