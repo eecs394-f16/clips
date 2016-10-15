@@ -6,43 +6,47 @@ var CouponsDetailController = function($scope, $routeParams, $http, UserCouponSe
     $scope.couponId = $routeParams.couponId;
     $scope.saving = false;
     $scope.saved = false;
-    $scope.redeemed = false;
-
     $scope.coupon = undefined;
-
     $scope.error = undefined;
     $scope.waiting = true;
     $scope.showQR = false;
     $scope.redeemcount = 0;
+    $scope.processing = false;
 
     $scope.saveCoupon = function(){
+      $scope.processing = true;
       UserCouponService.save({userid: 1, couponid:   $scope.couponId}).$promise.then(
         //success
         function(value){
           console.log('saved');
           $scope.saved = true;
+          $scope.processing = false;
         },
 
         //error
         function(error){
           console.log('error');
           $scope.error = error;
+          $scope.processing = false;
         }
       )
     }
 
     $scope.removeCoupon = function(){
+      $scope.processing = true;
       UserCouponService.removeCoupon({userid: 1, couponid:  $scope.couponId}).$promise.then(
         //success
         function(value){
           console.log('deleted');
           $scope.saved = false;
+          $scope.processing = false;
         },
 
         //error
         function(error){
           console.log('error - delete');
           $scope.error = error;
+          $scope.processing = false;
         }
       )
     }
@@ -72,9 +76,7 @@ var CouponsDetailController = function($scope, $routeParams, $http, UserCouponSe
     $scope.showCode = function() {
                 $scope.showQR = true;
                 $scope.redeemcount ++}
-    $scope.hideCode = function() {
-                $scope.showQR = false;
-                $scope.redeemcount ++}
+
 
 };
 
