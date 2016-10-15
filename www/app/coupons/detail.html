@@ -18,13 +18,9 @@
         </div>
         <div class="row button-row">
             <div class="col-xs-6">
-                <button class="btn btn-primary">
+                <button class="btn btn-primary" ng-click= "showCode()">
                     Redeem
                 </button>
-                <script>
-                    function myFunction() {
-                    alert("QR Code goes here");}
-                </script>
             </div>
             <div class="col-xs-6">
                 <button ng-if="!saved" class="btn btn-primary" ng-click="saveCoupon()">
