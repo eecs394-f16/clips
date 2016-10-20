@@ -76,6 +76,9 @@ var CouponsDetailController = function($scope, $routeParams, $http, UserCouponSe
     $scope.showCode = function() {
                 $scope.showQR = true;
                 $scope.redeemcount ++}
+    $scope.hideCode = function() {
+                $scope.showQR = false;
+                $scope.redeemcount ++}
 
 
 };

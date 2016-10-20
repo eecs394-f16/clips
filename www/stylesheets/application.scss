@@ -71,6 +71,17 @@ $ios-theme-color: #00B5FF;
     }
 }
 
+#coupon-search-bar{
+    width: 95%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.qr-code{
+    width: 50%;
+    height: 50%;
+}
+
 .coupon-card{
     margin: 10px 10px;
     background-color: #fff;
