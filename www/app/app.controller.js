@@ -21,7 +21,7 @@ var AppController = function($scope, $location, NavBarService){
             index: 0
         },
         {
-            text: 'Coupons',
+            text: 'Deals',
             link: '#coupons',
             default_link: "#coupons",
             class: 'passive',

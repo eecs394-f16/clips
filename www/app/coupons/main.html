@@ -18,7 +18,10 @@
         </div>
     </div>
     <div ng-if="!waiting && !error" class="coupon-scroll-area">
-        <input type = "text" ng-model= "searchBox" id = "coupon-search-bar">
+        <div>
+            <i class = "glyphicon glyphicon-search"></i>
+            <input type = "text" ng-model= "searchBox" id = "coupon-search-bar"> 
+        </div>
             <div class="coupon-card " ng-repeat="coupon in coupons | filter: searchBox">
                 <a class="row" ng-href="/#coupons/{{coupon.id}}" ng-click = "goTo(coupon.id)">
                     <div ng-if="coupon.photo_link" class="col-sm-2">
