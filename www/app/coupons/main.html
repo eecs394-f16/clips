@@ -18,31 +18,32 @@
         </div>
     </div>
     <div ng-if="!waiting && !error" class="coupon-scroll-area">
-        <div>
+        <div id="coupon-search-bar-container" class="inner-addon left-addon">
             <i class = "glyphicon glyphicon-search"></i>
-            <input type = "text" ng-model= "searchBox" id = "coupon-search-bar"> 
+            <input type = "text" ng-model= "searchBox" id = "coupon-search-bar">
         </div>
-            <div class="coupon-card " ng-repeat="coupon in coupons | filter: searchBox">
-                <a class="row" ng-href="/#coupons/{{coupon.id}}" ng-click = "goTo(coupon.id)">
-                    <div ng-if="coupon.photo_link" class="col-sm-2">
-                        <img ng-src={{coupon.photo_link}}>
-                    </div>
-                    <div ng-if="!coupon.photo_link" class="col-sm-2">
-                        <img src="./assets/money-flat.png">
-                    </div>
-                    <div class="col-sm-10">
-                        <h4>
-                            {{coupon.deal_text}}
-                        </h4>
-                        <h5>
-                            {{coupon.name}}
-                        </h5>
-                        <p>
-                            {{coupon.start_of_deal}} - {{coupon.end_of_deal}}
-                        </p>
-                    </div>
-                </a>
-            </div>
+        <div id="coupon-container">
+          <div class="coupon-card " ng-repeat="coupon in coupons | filter: searchBox">
+              <a class="row" ng-href="/#coupons/{{coupon.id}}" ng-click = "goTo(coupon.id)">
+                  <div ng-if="coupon.photo_link" class="col-sm-2">
+                      <img ng-src={{coupon.photo_link}}>
+                  </div>
+                  <div ng-if="!coupon.photo_link" class="col-sm-2">
+                      <img src="./assets/money-flat.png">
+                  </div>
+                  <div class="col-sm-10">
+                      <h4>
+                          {{coupon.deal_text}}
+                      </h4>
+                      <h5>
+                          {{coupon.name}}
+                      </h5>
+                      <p>
+                          {{coupon.start_of_deal}} - {{coupon.end_of_deal}}
+                      </p>
+                  </div>
+              </a>
+          </div>
         </div>
     </div>
 </div>

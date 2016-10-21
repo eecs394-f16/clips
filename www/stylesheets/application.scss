@@ -71,11 +71,48 @@ $ios-theme-color: #00B5FF;
     }
 }
 
-#coupon-search-bar{
+#coupon-container{
+  margin-top: 50px;
+}
+
+#coupon-search-bar-container{
     width: 95%;
+    margin-top:10px;
     margin-right: auto;
     margin-left: auto;
+    position: fixed;
+    z-index: 100;
 }
+
+#coupon-search-bar{
+  width: 100%;
+  border-color: #ddd;
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+  margin-left: 10px;
+  box-shadow: none;
+}
+
+/* enable absolute positioning */
+.inner-addon {
+    position: relative;
+}
+
+/* style icon */
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align icon */
+.left-addon .glyphicon  { left:  10px;}
+.right-addon .glyphicon { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
 
 .qr-code{
     width: 50%;
