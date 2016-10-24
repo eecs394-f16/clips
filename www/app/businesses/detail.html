@@ -15,8 +15,8 @@
             </h5>
         </div>
 
-	<button class="btn btn-default" ng-click="open()">Show Map</button>
-        <leaflet lf-center="center" markers="markers" height="200px" width="100%"></leaflet>
+	<button class="btn btn-default" ng-click="show = !show">Show Map</button>
+        <leaflet lf-center="center" ng-show="show" markers="markers" height="200px" width="100%"></leaflet>
 
 
         <div ng-if="!waiting && !error" class="coupon-scroll-area">
