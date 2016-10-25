@@ -20,19 +20,11 @@ var BusinessesController = function($scope, $http, NavBarService){
     );
 
     $scope.goTo = function(id){
-        NavBarService.pathStackPush('businesses', '/businesses', "#businesses/"+id)
+        NavBarService.pathStackPush('businesses', '#businesses', "#businesses/"+id)
     }
 
-
-
-
-
-
-
-
-
     $scope.goTo = function(id){
-        NavBarService.pathStackPush('businesses', '/businesses', "#businesses/"+id)
+        NavBarService.pathStackPush('businesses', '#businesses', "#businesses/"+id)
     }
 
 };
