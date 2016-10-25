@@ -9,9 +9,11 @@
             <h4>
                 {{coupon.deal_text}}
             </h4>
-            <h5>
-                {{coupon.name}}
-            </h5>
+            <a ng-href="/#businesses/{{coupon.business_id}}" ng-click = "goTo(coupon.business_id)">
+                 <h5>
+                    {{coupon.name}}   
+                </h5>
+            </a>
             <p>
                 {{coupon.start_of_deal}} - {{coupon.end_of_deal}}
             </p>
