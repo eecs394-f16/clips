@@ -4,14 +4,17 @@ angular.module('clips.account', []);
 
 
 
-angular.module('clips', ['supersonic',
+angular.module('clips', [			 
+                        'supersonic',
                           'ngRoute',
                           'ngResource',
-                          "leaflet-directive",
-                          'clips.coupons',
+                         "leaflet-directive",
+			 "ui.bootstrap",
+                        'clips.coupons',
                           'clips.businesses',
                           "clips.services",
-                          "clips.account"
+                         "clips.account",
+			 
 ])
 .controller('IndexController', function($scope, supersonic) {
 

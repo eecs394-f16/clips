@@ -1,5 +1,7 @@
 /* recommended */
-var BusinessesDetailsController = function($scope, $http, NavBarService, $routeParams){
+
+
+var BusinessesDetailsController = function($scope, $http, NavBarService, $routeParams, $modal){
     $scope.businesssId = $routeParams.businesssId
     $scope.coupons = undefined;
     $scope.business = undefined;
@@ -12,7 +14,21 @@ var BusinessesDetailsController = function($scope, $http, NavBarService, $routeP
     }
 
     $scope.markers = {}
+    
 
+
+
+    $scope.open = function () {
+
+	var modalInstance = $modal.open({
+	    templateUrl: './business/mapView.html',
+	});
+
+
+    }
+
+
+    
     $http({
         method: "GET",
         url: " https://eecs394-clips-backend.herokuapp.com/business/" + $scope.businesssId
@@ -69,4 +85,9 @@ angular
     .module('clips.businesses')
     .controller("BusinessesDetailsController", BusinessesDetailsController);
 
+
+
+
 BusinessesDetailsController.$inject = ['$scope', '$http', "NavBarService", "$routeParams"];
+
+
