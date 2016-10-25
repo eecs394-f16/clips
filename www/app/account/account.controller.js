@@ -30,6 +30,8 @@ var AccountController = function($scope, $http, UserCouponService, CreateAccount
       $scope.loggedIn = true;
     }
   }
+
+
   var getCoupons = function(userid){
     UserCouponService.get({userid: userid}).$promise.then(
       //success
@@ -52,7 +54,6 @@ var AccountController = function($scope, $http, UserCouponService, CreateAccount
   }
 
 
-  //TODO - Make userid dynamic
   $scope.removeCoupon = function(couponId, couponIndex){
     UserCouponService.removeCoupon({userid: $scope.user.id, couponid: couponId}).$promise.then(
       //success
@@ -118,27 +119,20 @@ var AccountController = function($scope, $http, UserCouponService, CreateAccount
       $scope.createAccountInfo.error = "You need to emter a valid email address and password";
     }else{
 
-    var req = {
-     method: 'POST',
-     url: 'https://eecs394-clips-backend.herokuapp.com/account',
-     params: {
-         email: $scope.createAccountInfo.email,
-         username: $scope.createAccountInfo.username,
-         first_name: $scope.createAccountInfo.first_name,
-         last_name: $scope.createAccountInfo.last_name,
-         password: $scope.createAccountInfo.password
-       }
-    }
 
-    $http(req).then(
-      function(value){
-        console.log(value)
-        $scope.loggedIn= true;
-      },
-      function(error){
-        console.log(error)
-      }
-    );
+      UserService.createAccount($scope.createAccountInfo,
+        function(value){
+          $scope.loggedIn = true;
+          $scope.loginInfo.email = $scope.createAccountInfo.email;
+          $scope.loginInfo.password = $scope.createAccountInfo.password;
+          $scope.logIn()
+        },
+        function(error){
+          $scope.createAccountInfo.password = undefined;
+          $scope.createAccountInfo.error = error;
+        }
+      )
+
     }
   }
 

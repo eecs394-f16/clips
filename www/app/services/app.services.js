@@ -77,8 +77,29 @@ appServices.factory('UserService', ['$http',	function($http){
 	};
 
 
-	var createAccount = function(){
-		1+1;
+	var createAccount = function( createAccountInfo, successCallback, failureCallback){
+		var req = {
+     method: 'POST',
+     url: 'https://eecs394-clips-backend.herokuapp.com/account',
+     params: {
+         email: createAccountInfo.email,
+         username: createAccountInfo.username,
+         first_name: createAccountInfo.first_name,
+         last_name: createAccountInfo.last_name,
+         password: createAccountInfo.password
+       }
+    }
+
+    $http(req).then(
+      function(value){
+        console.log(value)
+				successCallback(value);
+      },
+      function(error){
+        console.log(error)
+				failureCallback(error);
+      }
+    );
 
 	};
 
@@ -87,7 +108,8 @@ appServices.factory('UserService', ['$http',	function($http){
 	}
 	return {
 		login: login,
-		getUser: getUser
+		getUser: getUser,
+		createAccount: createAccount
 	}
 }]);
 

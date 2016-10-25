@@ -91,19 +91,19 @@
         <div>
           <form ng-submit="createAccount()">
             <div class="form-group">
-              <input type="textarea" class="form-control" id="createAccountEmail" placeholder="Enter email" ng-model="createAccountInfo.email" ng-required="true">
-            </div>
-            <div class="form-group">
-              <input type="textarea" class="form-control" id="createAccountPassword" placeholder="Password" ng-model="createAccountInfo.password" ng-required="true">
-            </div>
-            <div class="form-group">
               <input type="textarea" class="form-control" id="createAccountFirstName" placeholder="First Name" ng-model="createAccountInfo.first_name" ng-required="true">
             </div>
             <div class="form-group">
               <input type="textarea" class="form-control" id="createAccountLastName" placeholder="Last Name" ng-model="createAccountInfo.last_name" ng-required="true">
             </div>
             <div class="form-group">
+              <input type="textarea" class="form-control" id="createAccountEmail" placeholder="Enter email" ng-model="createAccountInfo.email" ng-required="true">
+            </div>
+            <div class="form-group">
               <input type="textarea" class="form-control" id="createAccountUsername" placeholder="Username" ng-model="createAccountInfo.username" ng-required="true">
+            </div>
+            <div class="form-group">
+              <input type="textarea" class="form-control" id="createAccountPassword" placeholder="Password" ng-model="createAccountInfo.password" ng-required="true">
             </div>
             <button type="submit" class="btn btn-primary" >Submit</button>
           </form>
