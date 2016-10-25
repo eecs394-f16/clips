@@ -32,6 +32,10 @@ var CouponsDetailController = function($scope, $routeParams, $http, UserCouponSe
       )
     }
 
+    $scope.goTo = function(id){
+        NavBarService.pathStackPush('businesses', '/businesses/'+    $scope.businesssId , "#businesses/"+    $scope.businesssId )
+    }
+
     $scope.removeCoupon = function(){
       $scope.processing = true;
       UserCouponService.removeCoupon({userid: 1, couponid:  $scope.couponId}).$promise.then(
