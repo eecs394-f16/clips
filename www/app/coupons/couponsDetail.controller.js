@@ -2,7 +2,7 @@
  * Created by djdapz on 9/29/16.
  */
 /* recommended */
-var CouponsDetailController = function($scope, $routeParams, $http, UserCouponService){
+var CouponsDetailController = function($scope, $routeParams, $http, UserCouponService, UserService){
     $scope.couponId = $routeParams.couponId;
     $scope.saving = false;
     $scope.saved = false;
@@ -12,10 +12,15 @@ var CouponsDetailController = function($scope, $routeParams, $http, UserCouponSe
     $scope.showQR = false;
     $scope.redeemcount = 0;
     $scope.processing = false;
+    $scope.user = UserService.getUser();
 
     $scope.saveCoupon = function(){
+      if($scope.user.id == -1){
+          $scope.error = "You must login or create an account to save deals!"
+          return;
+      }
       $scope.processing = true;
-      UserCouponService.save({userid: 1, couponid:   $scope.couponId}).$promise.then(
+      UserCouponService.save({userid: $scope.user.id, couponid:   $scope.couponId}).$promise.then(
         //success
         function(value){
           console.log('saved');
@@ -38,7 +43,7 @@ var CouponsDetailController = function($scope, $routeParams, $http, UserCouponSe
 
     $scope.removeCoupon = function(){
       $scope.processing = true;
-      UserCouponService.removeCoupon({userid: 1, couponid:  $scope.couponId}).$promise.then(
+      UserCouponService.removeCoupon({userid: $scope.user.id, couponid:  $scope.couponId}).$promise.then(
         //success
         function(value){
           console.log('deleted');
@@ -60,7 +65,7 @@ var CouponsDetailController = function($scope, $routeParams, $http, UserCouponSe
     //TODO - make service
     $http({
         method: "GET",
-        url: " https://eecs394-clips-backend.herokuapp.com/coupon/" + $scope.couponId + "/user/" + 1
+        url: " https://eecs394-clips-backend.herokuapp.com/coupon/" + $scope.couponId + "/user/" + $scope.user.id
     }).then(
         function successCallback(response){
             $scope.coupon = response.data[0];
@@ -92,4 +97,4 @@ angular
     .module('clips.coupons')
     .controller("CouponsDetailController", CouponsDetailController);
 
-CouponsDetailController.$inject = ['$scope', "$routeParams", "$http", "UserCouponService"];
+CouponsDetailController.$inject = ['$scope', "$routeParams", "$http", "UserCouponService", "UserService"];

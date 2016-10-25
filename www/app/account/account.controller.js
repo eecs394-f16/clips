@@ -1,32 +1,60 @@
 /* recommended */
-var AccountController = function($scope, $http, UserCouponService){
+var AccountController = function($scope, $http, UserCouponService, CreateAccountService, UserService){
   $scope.savedCoupons = [];
   $scope.error = undefined;
   $scope.waiting = true;
+  $scope.creatingAccount =false;
+  $scope.loggedIn = false;
+  $scope.loggingIn = true;
+  $scope.user = UserService.getUser();
 
-  //TODO - Make userid dynamic
-  UserCouponService.get({userid: 1}).$promise.then(
-		//success
-		function( value ){
-			$scope.savedCoupons = value ? value : [];
-      $scope.waiting = false;
+  $scope.loginInfo ={
+    password: undefined,
+    email: undefined,
+    error: undefined
+  }
+  $scope.createAccountInfo = {
+    password: undefined,
+    email: undefined,
+    error: undefined,
+    username: undefined,
+    first_name: undefined,
+    last_name: undefined
+  }
 
-      //this processing should be moved to backend
-      for(var i = 0; i<$scope.savedCoupons.length; i++){
-        $scope.savedCoupons[i].deleting = false;
-        $scope.savedCoupons[i].index = i;
+  var init = function(){
+    if($scope.user.id == -1){
+      $scope.loggedIn = false;
+    }else{
+      getCoupons($scope.user.id);
+      $scope.loggedIn = true;
+    }
+  }
+  var getCoupons = function(userid){
+    UserCouponService.get({userid: userid}).$promise.then(
+      //success
+      function( value ){
+        $scope.savedCoupons = value ? value : [];
+        $scope.waiting = false;
+
+        //this processing should be moved to backend
+        for(var i = 0; i<$scope.savedCoupons.length; i++){
+          $scope.savedCoupons[i].deleting = false;
+          $scope.savedCoupons[i].index = i;
+        }
+      },
+      //error
+      function( error ){
+        $scope.error = error;
+        $scope.waiting = false;
       }
-		},
-		//error
-		function( error ){
-			$scope.error = error;
-      $scope.waiting = false;
-		}
-	);
+    );
+  }
+
 
   //TODO - Make userid dynamic
   $scope.removeCoupon = function(couponId, couponIndex){
-    UserCouponService.removeCoupon({userid: 1, couponid: couponId}).$promise.then(
+    UserCouponService.removeCoupon({userid: $scope.user.id, couponid: couponId}).$promise.then(
       //success
       function( value ){
         $scope.deleted;
@@ -45,14 +73,80 @@ var AccountController = function($scope, $http, UserCouponService){
     $scope.savedCoupons[couponIndex].deleting = true;
   }
 
+  $scope.switchToCreateAccount = function(){
+    $scope.creatingAccount = true;
+    $scope.loggingIn = false;
+  }
 
+  $scope.switchToLogin = function(){
+    $scope.creatingAccount = false;
+    $scope.loggingIn = true;
+  }
 
+  $scope.logIn = function(){
+    //TODO - check if email is valid
+    $scope.loginInfo.error = undefined;
+    if($scope.loginInfo.password == undefined || $scope.loginInfo.email == undefined){
+      $scope.loginInfo.error = "You need to emter a valid email address and password";
+    }else{
+      UserService.login($scope.loginInfo.email , $scope.loginInfo.password,
+        function(user){
+          $scope.user = user;
+          if(user.error){
+            $scope.loginInfo.error = $scope.user.error;
+            $scope.loginInfo.password = "";
+          }else{
+            getCoupons($scope.user.id);
+            $scope.loggedIn = true;
+          }
+        },
+        function(error){
+          $scope.loginInfo.error = error;
+        }
+      )
+    }
+  }
 
+  $scope.createAccount = function(){
+    //TODO - check if email is valid
+    $scope.createAccountInfo.error = undefined;
+    if($scope.createAccountInfo.password == undefined
+        || $scope.createAccountInfo.email == undefined
+        || $scope.createAccountInfo.first_name == undefined
+        || $scope.createAccountInfo.last_name == undefined
+        || $scope.createAccountInfo.username == undefined){
+      $scope.createAccountInfo.error = "You need to emter a valid email address and password";
+    }else{
 
+    var req = {
+     method: 'POST',
+     url: 'https://eecs394-clips-backend.herokuapp.com/account',
+     params: {
+         email: $scope.createAccountInfo.email,
+         username: $scope.createAccountInfo.username,
+         first_name: $scope.createAccountInfo.first_name,
+         last_name: $scope.createAccountInfo.last_name,
+         password: $scope.createAccountInfo.password
+       }
+    }
+
+    $http(req).then(
+      function(value){
+        console.log(value)
+        $scope.loggedIn= true;
+      },
+      function(error){
+        console.log(error)
+      }
+    );
+    }
+  }
+
+  init();
 };
 
 angular
     .module('clips.account')
     .controller("AccountController", AccountController);
 
-AccountController.$inject = ['$scope', '$http', "UserCouponService"];
+AccountController.$inject = ['$scope', '$http', "UserCouponService","CreateAccountService", "UserService"];
