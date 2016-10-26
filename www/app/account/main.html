@@ -1,55 +1,126 @@
 <div id="account-page">
-    <div>
-      <h2 class='cards-header'>
-        Your Saved Coupons
-      </h2>
+    <div ng-if='loggedIn'>
+      <div>
+        <h2 class='cards-header'>
+          {{user.first_name}}'s Saved Coupons
+        </h2>
 
-    </div>
-    <div ng-if = "error">
-      {{error}}
-    </div>
-    <div ng-if="savedCoupons.length ==0">
-      <div class="bs-callout bs-callout-info">
-        <h4>
-          Hey!
-        </h4>
-        <p>
-          You haven't saved any coupons yet. When you do, they'll appear here.
-        </p>
       </div>
-    </div>
-    <div ng-if="!waiting && !error" class="coupon-scroll-area">
-        <div class="coupon-card " ng-repeat="coupon in savedCoupons">
-            <div class="row" >
-                <div ng-if="coupon.photo_link" class="col-xs-4 first-col">
-                    <img ng-src={{coupon.photo_link}}>
-                </div>
-                <div ng-if="!coupon.photo_link" class="col-xs-4 first-col">
-                    <img src="./assets/money-flat.png">
-                </div>
-                <div class="col-xs-8">
-                    <h4>
-                        {{coupon.deal_text}}
-                    </h4>
-                    <h5>
-                        {{coupon.name}}
-                    </h5>
-                    <p>
-                        {{coupon.start_of_deal}} - {{coupon.end_of_deal}}
-                    </p>
-                </div>
-                <div class='col-xs-3 last-col card-button-col'>
-                  <button ng-if='!deleting' class='btn btn-danger btn-in-col' ng-click="removeCoupon(coupon.id, coupon.index)">
-                    Remove
-                  </button>
-                  <hr/>
-                  <a ng-if='!deleting' class='btn btn-primary btn-in-col' ng-href="/#coupons/{{coupon.id}}" ng-click = "goTo(coupon.id)">
-                    View
-                  </a>
-
-                  <span ng-if="deleting" class="glyphicon glyphicon-refresh spin"></span>
-                </div>
-            </div>
+      <div ng-if = "error">
+        {{error}}
+      </div>
+      <div ng-if="savedCoupons.length ==0">
+        <div class="bs-callout bs-callout-info">
+          <h4>
+            Hey!
+          </h4>
+          <p>
+            You haven't saved any coupons yet. When you do, they'll appear here.
+          </p>
         </div>
+      </div>
+      <div ng-if="!waiting && !error" class="coupon-scroll-area">
+          <div class="coupon-card " ng-repeat="coupon in savedCoupons">
+              <div class="row" >
+                  <div ng-if="coupon.photo_link" class="col-xs-3 first-col">
+                      <img ng-src={{coupon.photo_link}}>
+                  </div>
+                  <div ng-if="!coupon.photo_link" class="col-xs-3 first-col">
+                      <img src="./assets/money-flat.png">
+                  </div>
+                  <div class="col-xs-6">
+                      <h4>
+                          {{coupon.deal_text}}
+                      </h4>
+                      <h5>
+                          {{coupon.name}}
+                      </h5>
+                      <p>
+                          {{coupon.start_of_deal}} - {{coupon.end_of_deal}}
+                      </p>
+                  </div>
+                  <div class='col-xs-3 last-col card-button-col'>
+                    <button ng-if='!deleting' class='btn btn-danger btn-in-col' ng-click="removeCoupon(coupon.id, coupon.index)">
+                      Remove
+                    </button>
+                    <hr/>
+                    <a ng-if='!deleting' class='btn btn-primary btn-in-col' ng-href="/#coupons/{{coupon.id}}" ng-click = "goTo(coupon.id)">
+                      View
+                    </a>
+
+                    <span ng-if="deleting" class="glyphicon glyphicon-refresh spin"></span>
+                  </div>
+              </div>
+          </div>
+      </div>
+
     </div>
+    <div ng-if='!loggedIn' class='container'>
+      <div ng-if='loggingIn'>
+        <h2 class="login-title">
+          Log In
+        </h2>
+        <div>
+          <form  ng-submit="logIn()">
+            <div class="form-group">
+              <input type="email" class="form-control" id="loginEmail" placeholder="Enter email" ng-model="loginInfo.email" ng-required="true">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" id="loginPassword" placeholder="Password" ng-model="loginInfo.password" ng-required="true">
+            </div>
+            <button type="submit" class="btn btn-primary">Log In</button>
+          </form>
+          <div class="bs-callout bs-callout-danger" ng-if="loginInfo.error">
+            <h4>ERROR</h4>
+            <p>{{loginInfo.error}}</p>
+          </div>
+
+          <hr />
+          <p>
+            Don't have an account?
+          </p>
+          <button class="btn btn-primary" ng-click='switchToCreateAccount()'>
+            Create New Account
+          </button>
+        </div>
+      </div>
+      <div ng-if='creatingAccount'>
+        <h2 class="login-title">
+          Create An Account
+        </h2>
+        <div>
+          <form ng-submit="createAccount()">
+            <div class="form-group">
+              <input type="textarea" class="form-control" id="createAccountFirstName" placeholder="First Name" ng-model="createAccountInfo.first_name" ng-required="true">
+            </div>
+            <div class="form-group">
+              <input type="textarea" class="form-control" id="createAccountLastName" placeholder="Last Name" ng-model="createAccountInfo.last_name" ng-required="true">
+            </div>
+            <div class="form-group">
+              <input type="textarea" class="form-control" id="createAccountEmail" placeholder="Enter email" ng-model="createAccountInfo.email" ng-required="true">
+            </div>
+            <div class="form-group">
+              <input type="textarea" class="form-control" id="createAccountUsername" placeholder="Username" ng-model="createAccountInfo.username" ng-required="true">
+            </div>
+            <div class="form-group">
+              <input type="textarea" class="form-control" id="createAccountPassword" placeholder="Password" ng-model="createAccountInfo.password" ng-required="true">
+            </div>
+            <button type="submit" class="btn btn-primary" >Submit</button>
+          </form>
+          <div class="bs-callout bs-callout-danger" ng-if="createAccountError">
+            <h4>ERROR</h4>
+            <p>{{createAccountError | json}}</p>
+          </div>
+        <hr />
+        <p>
+          Already have an account?
+        </p>
+        <button ng-click='switchToLogin()'>
+          Login
+        </button>
+      </div>
+
+
+    </div>
+
 </div>

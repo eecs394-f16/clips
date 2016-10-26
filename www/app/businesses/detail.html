@@ -1,46 +1,56 @@
 <div class = 'business-detail-page detail-page'>
     <div class="content container">
         <div class="billboard">
-            <div ng-if="business.photo_link" class="col-sm-2">
+            <div ng-if="business.photo_link" >
                 <img src={{business.photo_link}} id='header-image'>
             </div>
         </div>
 
-        <div class="col-sm-10">
+        <div class="row">
+          <div class='col-xs-6'>
             <h4>
                 {{business.name}}
             </h4>
-            <h5>
+          </div>
+          <div class='col-xs-6'>
+            <h4>
                 {{business.hours}}
-            </h5>
+            </h4>
+          </div>
         </div>
 
-	<button class="btn btn-default" ng-click="show = !show">Show Map</button>
+        <div class='button-row row'>
+          <div class='col-xs-6'>
+            <button class="btn btn-default" ng-click="show = !show">
+              Show Map
+            </button>
+          </div>
+        </div>
         <leaflet lf-center="center" ng-show="show" markers="markers" height="200px" width="100%"></leaflet>
 
 
         <div ng-if="!waiting && !error" class="coupon-scroll-area">
-            <div class="coupon-card " ng-repeat="coupon in coupons">
-                <a class="row" ng-href="/#coupons/{{coupon.id}}" ng-click = "goTo(coupon.id)">
-                    <div ng-if="coupon.photo_link" class="col-sm-2">
-                        <img src={{coupon.photo_link}}>
-                    </div>
-                    <div ng-if="!coupon.photo_link" class="col-sm-2">
-                        <img src="./assets/money-flat.png">
-                    </div>
-                    <div class="col-sm-10">
-                        <h4>
-                            {{coupon.deal_text}}
-                        </h4>
-                        <h5>
-                            {{coupon.name}}
-                        </h5>
-                        <p>
-                            {{coupon.start_of_deal}} - {{coupon.end_of_deal}}
-                        </p>
-                    </div>
-                </a>
-            </div>
+          <div class="coupon-card" ng-repeat="coupon in coupons">
+              <a class="row" ng-href="/#coupons/{{coupon.id}}" ng-click = "goTo(coupon.id)">
+                  <div ng-if="coupon.photo_link" class="col-xs-4">
+                      <img ng-src={{coupon.photo_link}}>
+                  </div>
+                  <div ng-if="!coupon.photo_link" class="col-xs-4">
+                      <img src="./assets/money-flat.png">
+                  </div>
+                  <div class="col-xs-8">
+                      <h4>
+                          {{coupon.deal_text}}
+                      </h4>
+                      <h5>
+                          {{coupon.name}}
+                      </h5>
+                      <p>
+                          {{coupon.start_of_deal}} - {{coupon.end_of_deal}}
+                      </p>
+                  </div>
+              </a>
+          </div>
 
     </div>
 </div>

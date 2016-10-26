@@ -22,6 +22,97 @@ appServices.factory('UserCouponService', ['$resource',	function($resource){
 	});
 }]);
 
+appServices.factory('CreateAccountService', ['$resource',	function($resource){
+	return $resource('localhost:3000/account', {},{
+	//return $resource('https://eecs394-clips-backend.herokuapp.com/account', {},{
+	//{email: 'default', password: 'default', username: 'default', first_name: "default", last_name: 'default'},	{
+		create: {
+      method: "POST"
+    }
+	});
+}]);
+
+appServices.factory('UserService', ['$http',	function($http){
+
+	var user = {
+		email: undefined,
+    username: undefined,
+    first_name: undefined,
+    last_name: undefined,
+    id: -1
+	};
+
+	var login = function(email, password, success, failure){
+		var req = {
+		 method: 'GET',
+		 url: 'https://eecs394-clips-backend.herokuapp.com/login',
+		 params: {
+				 email: email,
+				 password: password
+			 }
+		}
+		//TODO - Abstract this out into the service while keeping the $http
+		$http(req).then(
+			function(value){
+				console.log(value)
+				if(value.data.user_data){
+					user.first_name = value.data.user_data.first_name;
+					user.last_name = value.data.user_data.last_name;
+					user.username = value.data.user_data.username;
+					user.id =	value.data.user_data.id;
+					user.email =value.data.user_data.email;
+					user.error = undefined;
+				}else{
+					user.error = "Your password and email combination was not found."
+					user.id = -1;
+				}
+				success(user);
+			},
+			function(error){
+				failure(error);
+				console.log(error)
+			}
+		);
+
+	};
+
+
+	var createAccount = function( createAccountInfo, successCallback, failureCallback){
+		var req = {
+     method: 'POST',
+     url: 'https://eecs394-clips-backend.herokuapp.com/account',
+     params: {
+         email: createAccountInfo.email,
+         username: createAccountInfo.username,
+         first_name: createAccountInfo.first_name,
+         last_name: createAccountInfo.last_name,
+         password: createAccountInfo.password
+       }
+    }
+
+    $http(req).then(
+      function(value){
+        console.log(value)
+				successCallback(value);
+      },
+      function(error){
+        console.log(error)
+				failureCallback(error);
+      }
+    );
+
+	};
+
+	var getUser = function(){
+		return user;
+	}
+	return {
+		login: login,
+		getUser: getUser,
+		createAccount: createAccount
+	}
+}]);
+
 appServices.factory('NavBarService', [function(){
  	var pathStack = {
 		coupons: [],
